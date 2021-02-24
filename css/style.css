@@ -35,7 +35,31 @@ body {
   border-radius: 25px;
 }
 
+#buttonContainer {
+  width: 330px;
+  height: 350px;
+  display: grid;
+  margin: 0 auto;
+  border: 2px solid #3232;
+  border-radius: 25px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
 
+.button {
+  background: #464646;
+  border: 2px solid #323232;
+  padding: 15px;
+  color: #E5E5E5;
+  border-radius: 25px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.biggerButton {
+   grid-column: span 2;
+   border-radius: 15px;
+}
 
 
 
