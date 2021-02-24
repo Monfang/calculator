@@ -3,3 +3,19 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #dff7f7;
 }
+
+.red {
+  background-color: #ff9999; 
+}
+
+.blue {
+  background-color: #2596be;
+}
+
+.green {
+  background-color: #CCE5CC;
+}
+
+.yellow {
+  background-color: #DAA520;
+}
