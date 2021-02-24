@@ -61,12 +61,22 @@ body {
    border-radius: 15px;
 }
 
+.button:Hover {
+  color: #464646;
+}
 
+.clearDel:hover {
+  background-color: #FF748C;
+}
 
-/* Mobile */
-@media (max-width: 450px) {
-  #calculator {
-    max-width: 210px;
-    max-height: 300px;
-  }
+.equal:hover {
+  background-color: #2596BE;
+}
+
+.number:hover {
+  background-color: #BFBFBF;
+}
+
+.operator:hover {
+  background-color: #DAA520;
 }
