@@ -3,3 +3,46 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #CCE5CC;
 }
+
+/* Aligns all content within the container to the center */
+#container {
+  text-align: center;
+}
+
+#heading {
+  color: #1E1E1E;
+}
+
+#calculator {
+  display: grid;
+  width: 350px;
+  height: 500px;
+  background-color: #323232;
+  border: 5px solid #323232;
+  border-radius: 25px;
+  margin: auto;
+  /*box-shadow: 1px -1px black inset;*/
+}
+
+#screen {
+  background-color: #464646;
+  width: 330px;
+  height: 120px;
+  display: inline-block;
+  margin: 0.5em auto;
+  box-shadow: 2px 2px #323232 inset, -2px -2px #323232 inset;
+  border: 2px solid #323232;
+  border-radius: 25px;
+}
+
+
+
+
+
+/* Mobile */
+@media (max-width: 450px) {
+  #calculator {
+    max-width: 210px;
+    max-height: 300px;
+  }
+}
