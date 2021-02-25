@@ -1,4 +1,8 @@
 let displayNumber = '';
+let firstNumber = '';
+let lastNumber = '';
+let chosenOperator = '';
+let result = '';
 
 function add (x, y) {
 	return x + y;
@@ -22,21 +26,42 @@ function divide (x, y) {
 //console.log(multiply(1,2));
 //console.log(divide(1,2));
 
-function operate (x, operator, y) {
-  if (operator == add) {
-    return add(x, y);
-  } else if (operator == subtract) {
-    return subtract(x, y);
-  } else if (operator == multiply) {
-    return multiply(x, y);
-  } else if (operator == divide){
-    return divide(x, y);
-  } return;
+function callOperator(symbol) {
+	firstNumber = displayNumber;
+	//console.log(firstNumber);
+	displayNumber = '';
+
+	chosenOperator = symbol;
+	//console.log(chosenOperator);
+	return chosenOperator;
+}
+
+
+function operate() {
+	firstNumber = parseFloat(firstNumber);
+	lastNumber = parseFloat(displayNumber);
+
+  if (chosenOperator == '+') {
+    result = add(firstNumber, lastNumber);
+  } else if (chosenOperator == '-') {
+    result = subtract(firstNumber, lastNumber);
+  } else if (chosenOperator == 'x') {
+    result = multiply(firstNumber, lastNumber);
+  } else if (chosenOperator == '/'){
+		if (firstNumber == 0 && lastNumber == 0){
+			document.getElementById('screenText').innerHTML = "ERROR";
+			return;
+		}
+    result = divide(firstNumber, lastNumber);
+  }
+
+	displayNumber = result;
+	document.getElementById('screenText').innerHTML = result;
+	//console.log(displayNumber);
 }
 
 // Console Log
-//console.log(operate(10, divide, 2));
-
+//console.log(operate(add, 1, 3));
 
 
 function populate(number) {
@@ -61,6 +86,8 @@ function populate(number) {
 
 function clearDisplay() {
 	displayNumber = '';
+	firstNumber = '';
+	lastNumber = '';
 	document.getElementById('screenText').innerHTML = displayNumber;
 	return;
 }
