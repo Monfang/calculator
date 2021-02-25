@@ -1,4 +1,4 @@
-let displayFirst = '';
+let displayNumber = '';
 
 function add (x, y) {
 	return x + y;
@@ -41,30 +41,31 @@ function operate (x, operator, y) {
 
 function populate(number) {
 
-  if ((number == "float") && (displayFirst.toString().indexOf('.') != -1)) {
+  if ((number == "float") && (displayNumber.toString().indexOf('.') != -1)) {
     return;
   } else if (number == "float"){
-    displayFirst += ".";
+    displayNumber += ".";
+		document.getElementById('screenText').innerHTML = displayNumber;
     return;
   } else {
     string = number.toString();
   }
 
-  if ((displayFirst.length >= 18) || (displayFirst >= 999999999)) {
+  if ((displayNumber.length >= 18) || (displayNumber >= 999999999)) {
     return;
   } else {
-    displayFirst += string;
-    document.getElementById('screenText').innerHTML = displayFirst;
+    displayNumber += string;
+    document.getElementById('screenText').innerHTML = displayNumber;
   }
 }
 
 function clearDisplay() {
-	displayFirst = '';
-	document.getElementById('screenText').innerHTML = displayFirst;
+	displayNumber = '';
+	document.getElementById('screenText').innerHTML = displayNumber;
 	return;
 }
 
 function deleteLast() {
-	displayFirst = displayFirst.slice(0, -1);
-	document.getElementById('screenText').innerHTML = displayFirst;
+	displayNumber = displayNumber.slice(0, -1);
+	document.getElementById('screenText').innerHTML = displayNumber;
 }
