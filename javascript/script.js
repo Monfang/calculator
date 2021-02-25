@@ -1,3 +1,5 @@
+let displayFirst = '';
+
 function add (x, y) {
 	return x + y;
 }
@@ -35,12 +37,11 @@ function operate (x, operator, y) {
 // Console Log
 //console.log(operate(10, divide, 2));
 
-let displayFirst = '';
+
 
 function populate(number) {
 
   if ((number == "float") && (displayFirst.toString().indexOf('.') != -1)) {
-    console.log(displayFirst);
     return;
   } else if (number == "float"){
     displayFirst += ".";
@@ -53,7 +54,12 @@ function populate(number) {
     return;
   } else {
     displayFirst += string;
-    //console.log(display);
     document.getElementById('screenText').innerHTML = displayFirst;
   }
+}
+
+function clearDisplay() {
+	displayFirst = '';
+	document.getElementById('screenText').innerHTML = displayFirst;
+	return;
 }
