@@ -20,12 +20,6 @@ function divide (x, y) {
   return x / y;
 }
 
-// Console Log
-//console.log(add(1,2));
-//console.log(subtract(1,2));
-//console.log(multiply(1,2));
-//console.log(divide(1,2));
-
 function callOperator(symbol) {
 	chosenOperator += symbol;
 
@@ -35,11 +29,9 @@ function callOperator(symbol) {
 		chosenOperator = one;
 		operate();
 		chosenOperator = two;
-
 	}
 	firstNumber = displayNumber;
 	displayNumber = '';
-
 }
 
 
@@ -62,8 +54,15 @@ function operate() {
   }
 
 	displayNumber = result;
-	document.getElementById('screenText').innerHTML = result;
-	chosenOperator = '';
+
+	if (result.toString().length >= 18) {
+		document.getElementById('screenText').innerHTML = result.toFixed(4);
+	} else if (result >= 999999999){
+		document.getElementById('screenText').innerHTML = "STOP DAT";
+	} else {
+		document.getElementById('screenText').innerHTML = result;
+		chosenOperator = '';
+	}
 	//console.log(displayNumber);
 }
 
