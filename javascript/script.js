@@ -27,13 +27,19 @@ function divide (x, y) {
 //console.log(divide(1,2));
 
 function callOperator(symbol) {
+	chosenOperator += symbol;
+
+	if (chosenOperator.length == 2) {
+		one = chosenOperator.slice(0, 1);
+		two = chosenOperator.slice(1, 2);
+		chosenOperator = one;
+		operate();
+		chosenOperator = two;
+
+	}
 	firstNumber = displayNumber;
-	//console.log(firstNumber);
 	displayNumber = '';
 
-	chosenOperator = symbol;
-	//console.log(chosenOperator);
-	return chosenOperator;
 }
 
 
@@ -57,6 +63,7 @@ function operate() {
 
 	displayNumber = result;
 	document.getElementById('screenText').innerHTML = result;
+	chosenOperator = '';
 	//console.log(displayNumber);
 }
 
@@ -88,6 +95,7 @@ function clearDisplay() {
 	displayNumber = '';
 	firstNumber = '';
 	lastNumber = '';
+	chosenOperator = '';
 	document.getElementById('screenText').innerHTML = displayNumber;
 	return;
 }
