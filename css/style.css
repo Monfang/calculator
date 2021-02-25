@@ -30,17 +30,24 @@ body {
   height: 120px;
   display: inline-block;
   margin: 0.5em auto;
-  box-shadow: 2px 2px #323232 inset, -2px -2px #323232 inset;
   border: 2px solid #323232;
   border-radius: 25px;
   position: relative;
 }
 
+#screenCalc {
+  color: #BFBFBF;
+  font-size: 24px;
+  position: absolute;
+  top: 0.3em;
+  right: 0.8em;
+}
+
 #screenText {
   color: #E5E5E5;
-  font-size: 28px;
+  font-size: 38px;
   position: absolute;
-  bottom: 0.5em;
+  bottom: 0.3em;
   right: 0.5em;
 }
 
