@@ -63,3 +63,8 @@ function clearDisplay() {
 	document.getElementById('screenText').innerHTML = displayFirst;
 	return;
 }
+
+function deleteLast() {
+	displayFirst = displayFirst.slice(0, -1);
+	document.getElementById('screenText').innerHTML = displayFirst;
+}
