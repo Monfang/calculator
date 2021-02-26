@@ -59,10 +59,12 @@ function operate() {
 		document.getElementById('screenText').innerHTML = result.toFixed(4);
 	} else if (result >= 999999999){
 		document.getElementById('screenText').innerHTML = "STOP DAT";
-	} else {
+		return;
+	}
+
 		document.getElementById('screenText').innerHTML = result;
 		chosenOperator = '';
-	}
+		console.log(chosenOperator);
 	//console.log(displayNumber);
 }
 
@@ -78,9 +80,16 @@ function populate(number) {
     displayNumber += ".";
 		document.getElementById('screenText').innerHTML = displayNumber;
     return;
-  } else {
-    string = number.toString();
   }
+
+	if ((chosenOperator == '') && (displayNumber !== '')) {
+		displayNumber = number;
+		document.getElementById('screenText').innerHTML = displayNumber;
+		return;
+    }
+
+    string = number.toString();
+
 
   if ((displayNumber.length >= 18) || (displayNumber >= 999999999)) {
     return;
@@ -95,6 +104,7 @@ function clearDisplay() {
 	firstNumber = '';
 	lastNumber = '';
 	chosenOperator = '';
+	result = '';
 	document.getElementById('screenText').innerHTML = displayNumber;
 	return;
 }
