@@ -1,8 +1,24 @@
+const screenText = document.querySelector('[calc-screenText]');
+const clear = document.querySelector('[calc-clear]');
+
 let displayNumber = '';
 let firstNumber = '';
 let lastNumber = '';
 let chosenOperator = '';
 let result = '';
+
+clear.addEventListener('click', function () {
+    clearDisplay();
+})
+
+function clearDisplay() {
+	displayNumber = '';
+  firstNumber = '';
+  secondNumber = '';
+  chosenOperator = '';
+  result = '';
+	screenText.innerText = '';
+}
 
 function add (x, y) {
 	return x + y;
@@ -82,14 +98,6 @@ function populate(number) {
     displayNumber += string;
     document.getElementById('screenText').innerHTML = displayNumber;
   }
-}
-
-function clearDisplay() {
-	displayNumber = '';
-	firstNumber = '';
-	lastNumber = '';
-	document.getElementById('screenText').innerHTML = displayNumber;
-	return;
 }
 
 function deleteLast() {

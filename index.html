@@ -21,28 +21,27 @@
 
       <div id="calculator">
         <div id="screen">
-          <div id="screenCalc"></div>
-          <div id="screenText">619</div>
+          <div calc-screenText id="screenText"></div>
         </div>
         <div id="buttonContainer">
-          <button type="button" class="button biggerButton clearDel" name="button" onclick="clearDisplay();">CLEAR</button>
-          <button type="button" class="button clearDel" name="button" onclick="deleteLast();">DEL</button>
-          <button type="button" class="button operator" name="button" onclick="callOperator('/');">&divide;</button>
-          <button type="button" class="button number" name="button" onclick="populate(7);">7</button>
-          <button type="button" class="button number" name="button" onclick="populate(8);">8</button>
-          <button type="button" class="button number" name="button" onclick="populate(9);">9</button>
-          <button type="button" class="button operator" name="button" onclick="callOperator('x');">&times;</button>
-          <button type="button" class="button number" name="button" onclick="populate(4);">4</button>
-          <button type="button" class="button number" name="button" onclick="populate(5);">5</button>
-          <button type="button" class="button number" name="button" onclick="populate(6);">6</button>
-          <button type="button" class="button operator" name="button" onclick="callOperator('-');">&minus;</button>
-          <button type="button" class="button number" name="button" onclick="populate(1);">1</button>
-          <button type="button" class="button number" name="button" onclick="populate(2);">2</button>
-          <button type="button" class="button number" name="button" onclick="populate(3);">3</button>
-          <button type="button" class="button operator" name="button" onclick="callOperator('+');">&plus;</button>
-          <button type="button" class="button number" name="button" onclick="populate(0);">0</button>
-          <button type="button" class="button operator" name="button" onclick="populate('float');">.</button>
-          <button type="button" class="button biggerButton equal" name="button" onclick="operate();">&equals;</button>
+          <button calc-clear class="button biggerButton clearDel" >CLEAR</button>
+          <button class="button clearDel" onclick="deleteLast();">DEL</button>
+          <button class="button operator" onclick="callOperator('/');">&divide;</button>
+          <button class="button number" onclick="populate(7);">7</button>
+          <button class="button number" onclick="populate(8);">8</button>
+          <button class="button number"  onclick="populate(9);">9</button>
+          <button class="button operator" onclick="callOperator('x');">&times;</button>
+          <button class="button number" onclick="populate(4);">4</button>
+          <button class="button number" onclick="populate(5);">5</button>
+          <button class="button number" onclick="populate(6);">6</button>
+          <button class="button operator" onclick="callOperator('-');">&minus;</button>
+          <button class="button number" onclick="populate(1);">1</button>
+          <button class="button number" onclick="populate(2);">2</button>
+          <button class="button number" onclick="populate(3);">3</button>
+          <button class="button operator" onclick="callOperator('+');">&plus;</button>
+          <button class="button number" onclick="populate(0);">0</button>
+          <button class="button operator" onclick="populate('float');">.</button>
+          <button class="button biggerButton equal" onclick="operate();">&equals;</button>
         </div>
       </div>
 
