@@ -1,24 +1,13 @@
 const screenText = document.querySelector('[calc-screenText]');
 const clear = document.querySelector('[calc-clear]');
+const remove = document.querySelector('[calc-delete]');
+const operator = document.querySelectorAll('[calc-operator]');
 
 let displayNumber = '';
 let firstNumber = '';
 let lastNumber = '';
 let chosenOperator = '';
 let result = '';
-
-clear.addEventListener('click', function () {
-    clearDisplay();
-})
-
-function clearDisplay() {
-	displayNumber = '';
-  firstNumber = '';
-  secondNumber = '';
-  chosenOperator = '';
-  result = '';
-	screenText.innerText = '';
-}
 
 function add (x, y) {
 	return x + y;
@@ -36,19 +25,39 @@ function divide (x, y) {
   return x / y;
 }
 
-// Console Log
-//console.log(add(1,2));
-//console.log(subtract(1,2));
-//console.log(multiply(1,2));
-//console.log(divide(1,2));
+clear.addEventListener('click', function () {
+    clearDisplay();
+})
 
-function callOperator(symbol) {
-	firstNumber = displayNumber;
-	//console.log(firstNumber);
+function clearDisplay() {
 	displayNumber = '';
+  firstNumber = '';
+  secondNumber = '';
+  chosenOperator = '';
+  result = '';
+	screenText.innerText = '';
+}
 
+remove.addEventListener('click', function() {
+  deleteLast();
+})
+
+function deleteLast() {
+	displayNumber = displayNumber.slice(0, -1);
+	screenText.innerHTML = displayNumber;
+}
+
+operator.forEach(button => {
+    button.addEventListener('click', function () {
+        chooseOperator(button.innerHTML);
+    })
+})
+
+
+function chooseOperator(symbol) {
+	firstNumber = displayNumber;
+	displayNumber = '';
 	chosenOperator = symbol;
-	//console.log(chosenOperator);
 	return chosenOperator;
 }
 
@@ -98,9 +107,4 @@ function populate(number) {
     displayNumber += string;
     document.getElementById('screenText').innerHTML = displayNumber;
   }
-}
-
-function deleteLast() {
-	displayNumber = displayNumber.slice(0, -1);
-	document.getElementById('screenText').innerHTML = displayNumber;
 }
