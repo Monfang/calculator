@@ -67,6 +67,7 @@ function operate() {
 
 		document.getElementById('screenText').innerHTML = result;
 		chosenOperator = '';
+		console.log(chosenOperator);
 	//console.log(displayNumber);
 }
 
@@ -84,11 +85,11 @@ function populate(number) {
     return;
   }
 
-	if ((chosenOperator == '') && (displayNumber !== '')) {
-		displayNumber = number;
-		document.getElementById('screenText').innerHTML = displayNumber;
-		return;
-    }
+	//if ((chosenOperator == '') && (displayNumber !== '')) {
+		//displayNumber = number;
+		//document.getElementById('screenText').innerHTML = displayNumber;
+		//return;
+    //}
 
     string = number.toString();
 
