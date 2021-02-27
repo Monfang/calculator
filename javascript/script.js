@@ -3,6 +3,7 @@ const clear = document.querySelector('[calc-clear]');
 const remove = document.querySelector('[calc-delete]');
 const operator = document.querySelectorAll('[calc-operator]');
 const number = document.querySelectorAll('[calc-number]');
+const equals = document.querySelector('[calc-equals]');
 
 let displayNumber = '';
 let firstNumber = '';
@@ -75,19 +76,21 @@ number.forEach(button => {
 })
 
 function appendNumber(number) {
+  if ((displayNumber.length >= 18) || (displayNumber >= 999999999)) {
     if (number === '.' && displayNumber.includes('.')) return;
-    //if (chosenOperator === null && result !== '') {
-    //    clearDisplay();
-    //}
-    if ((displayNumber.length >= 18) || (displayNumber >= 999999999)) {
       return;
     }
     displayNumber += number;
     screenText.innerText = displayNumber;
 }
 
+equals.addEventListener('click', function () {
+  //  if (previousOperand.innerText === '') {
+    //    return;
+  //  }
+  operate();
 
-
+})
 
 function operate() {
 	firstNumber = parseFloat(firstNumber);
@@ -101,13 +104,13 @@ function operate() {
     result = multiply(firstNumber, lastNumber);
   } else if (chosenOperator == '/'){
 		if (firstNumber == 0 && lastNumber == 0){
-			document.getElementById('screenText').innerHTML = "ERROR";
+			screenText.innerHTML = "ERROR";
 			return;
 		}
     result = divide(firstNumber, lastNumber);
   }
 
 	displayNumber = result;
-	document.getElementById('screenText').innerHTML = result;
-	//console.log(displayNumber);
+	screenText.innerHTML = result;
+
 }
