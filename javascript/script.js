@@ -2,6 +2,7 @@ const screenText = document.querySelector('[calc-screenText]');
 const clear = document.querySelector('[calc-clear]');
 const remove = document.querySelector('[calc-delete]');
 const operator = document.querySelectorAll('[calc-operator]');
+const number = document.querySelectorAll('[calc-number]');
 
 let displayNumber = '';
 let firstNumber = '';
@@ -53,13 +54,39 @@ operator.forEach(button => {
     })
 })
 
-
 function chooseOperator(symbol) {
-	firstNumber = displayNumber;
+	chosenOperator += symbol;
+
+	if (chosenOperator.length == 2) {
+		firstOperator = chosenOperator.slice(0, 1);
+		secondOperator = chosenOperator.slice(1, 2);
+		chosenOperator = firstOperator;
+		operate();
+		chosenOperator = secondOperator;
+	}
+  firstNumber = displayNumber;
 	displayNumber = '';
-	chosenOperator = symbol;
-	return chosenOperator;
 }
+
+number.forEach(button => {
+    button.addEventListener('click', function () {
+        appendNumber(button.innerHTML);
+    })
+})
+
+function appendNumber(number) {
+    if (number === '.' && displayNumber.includes('.')) return;
+    //if (chosenOperator === null && result !== '') {
+    //    clearDisplay();
+    //}
+    if ((displayNumber.length >= 18) || (displayNumber >= 999999999)) {
+      return;
+    }
+    displayNumber += number;
+    screenText.innerText = displayNumber;
+}
+
+
 
 
 function operate() {
@@ -83,28 +110,4 @@ function operate() {
 	displayNumber = result;
 	document.getElementById('screenText').innerHTML = result;
 	//console.log(displayNumber);
-}
-
-// Console Log
-//console.log(operate(add, 1, 3));
-
-
-function populate(number) {
-
-  if ((number == "float") && (displayNumber.toString().indexOf('.') != -1)) {
-    return;
-  } else if (number == "float"){
-    displayNumber += ".";
-		document.getElementById('screenText').innerHTML = displayNumber;
-    return;
-  } else {
-    string = number.toString();
-  }
-
-  if ((displayNumber.length >= 18) || (displayNumber >= 999999999)) {
-    return;
-  } else {
-    displayNumber += string;
-    document.getElementById('screenText').innerHTML = displayNumber;
-  }
 }
