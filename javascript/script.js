@@ -1,3 +1,10 @@
+const screenText = document.querySelector('[calc-screenText]');
+const clear = document.querySelector('[calc-clear]');
+const remove = document.querySelector('[calc-delete]');
+const operator = document.querySelectorAll('[calc-operator]');
+const number = document.querySelectorAll('[calc-number]');
+const equals = document.querySelector('[calc-equals]');
+
 let displayNumber = '';
 let firstNumber = '';
 let lastNumber = '';
@@ -20,23 +27,79 @@ function divide (x, y) {
   return x / y;
 }
 
-function callOperator(symbol) {
-	chosenOperator += symbol;
+clear.addEventListener('click', function () {
+    clearDisplay();
+})
 
-	if (chosenOperator.length == 2) {
+function clearDisplay() {
+	displayNumber = '';
+  firstNumber = '';
+  secondNumber = '';
+  chosenOperator = '';
+  result = '';
+	screenText.innerText = '';
+}
+
+remove.addEventListener('click', function() {
+  deleteLast();
+})
+
+function deleteLast() {
+	displayNumber = displayNumber.slice(0, -1);
+	screenText.innerHTML = displayNumber;
+}
+
+operator.forEach(button => {
+    button.addEventListener('click', function () {
+        chooseOperator(button.innerHTML);
+    })
+})
+
+function chooseOperator(symbol) {
+  chosenOperator += symbol;
+
+  if (chosenOperator.length == 2) {
 		if (displayNumber == '') {
 			return;
 		}
-		one = chosenOperator.slice(0, 1);
-		two = chosenOperator.slice(1, 2);
-		chosenOperator = one;
-		operate();
-		chosenOperator = two;
-	}
-	firstNumber = displayNumber;
-	displayNumber = '';
+    one = chosenOperator.slice(0, 1);
+    two = chosenOperator.slice(1, 2);
+    chosenOperator = one;
+    operate();
+    chosenOperator = two;
+  }
+  firstNumber = displayNumber;
+  displayNumber = '';
+  }
+
+number.forEach(button => {
+    button.addEventListener('click', function () {
+        appendNumber(button.innerHTML);
+    })
+})
+
+function appendNumber(number) {
+  if ((displayNumber.length >= 18) || (displayNumber >= 999999999)) {
+    if (number === '.' && displayNumber.includes('.')) return;
+      return;
+    }
+
+    //if ((chosenOperator == '') && (displayNumber !== '')) {
+		//displayNumber = number;
+		//screenText.innerHTML = displayNumber;
+		//return;
+    //}
+
+    displayNumber += number;
+    screenText.innerText = displayNumber;
 }
 
+equals.addEventListener('click', function () {
+  //  if (previousOperand.innerText === '') {
+    //    return;
+  //  }
+  operate();
+})
 
 function operate() {
 	firstNumber = parseFloat(firstNumber);
@@ -50,7 +113,7 @@ function operate() {
     result = multiply(firstNumber, lastNumber);
   } else if (chosenOperator == '/'){
 		if (firstNumber == 0 && lastNumber == 0){
-			document.getElementById('screenText').innerHTML = "ERROR";
+			screenText.innerHTML = "ERROR";
 			return;
 		}
     result = divide(firstNumber, lastNumber);
@@ -58,61 +121,7 @@ function operate() {
 
 	displayNumber = result;
 
-	if (result.toString().length >= 18) {
-		document.getElementById('screenText').innerHTML = result.toFixed(4);
-	} else if (result >= 999999999){
-		document.getElementById('screenText').innerHTML = "STOP DAT";
-		return;
-	}
+	screenText.innerHTML = result;
+  chosenOperator = '';
 
-		document.getElementById('screenText').innerHTML = result;
-		chosenOperator = '';
-		console.log(chosenOperator);
-	//console.log(displayNumber);
-}
-
-// Console Log
-//console.log(operate(add, 1, 3));
-
-
-function populate(number) {
-
-  if ((number == "float") && (displayNumber.toString().indexOf('.') != -1)) {
-    return;
-  } else if (number == "float"){
-    displayNumber += ".";
-		document.getElementById('screenText').innerHTML = displayNumber;
-    return;
-  }
-
-	//if ((chosenOperator == '') && (displayNumber !== '')) {
-		//displayNumber = number;
-		//document.getElementById('screenText').innerHTML = displayNumber;
-		//return;
-    //}
-
-    string = number.toString();
-
-
-  if ((displayNumber.length >= 18) || (displayNumber >= 999999999)) {
-    return;
-  } else {
-    displayNumber += string;
-    document.getElementById('screenText').innerHTML = displayNumber;
-  }
-}
-
-function clearDisplay() {
-	displayNumber = '';
-	firstNumber = '';
-	lastNumber = '';
-	chosenOperator = '';
-	result = '';
-	document.getElementById('screenText').innerHTML = displayNumber;
-	return;
-}
-
-function deleteLast() {
-	displayNumber = displayNumber.slice(0, -1);
-	document.getElementById('screenText').innerHTML = displayNumber;
 }
