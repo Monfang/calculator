@@ -109,9 +109,9 @@ function operate() {
     result = add(firstNumber, lastNumber);
   } else if (chosenOperator == '-') {
     result = subtract(firstNumber, lastNumber);
-  } else if (chosenOperator == 'x') {
+  } else if (chosenOperator == '×') {
     result = multiply(firstNumber, lastNumber);
-  } else if (chosenOperator == '/'){
+  } else if (chosenOperator == '÷'){
 		if (firstNumber == 0 && lastNumber == 0){
 			screenText.innerHTML = "ERROR";
 			return;
