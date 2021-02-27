@@ -56,18 +56,18 @@ operator.forEach(button => {
 })
 
 function chooseOperator(symbol) {
-	chosenOperator += symbol;
+  chosenOperator += symbol;
 
-	if (chosenOperator.length == 2) {
-		firstOperator = chosenOperator.slice(0, 1);
-		secondOperator = chosenOperator.slice(1, 2);
-		chosenOperator = firstOperator;
-		operate();
-		chosenOperator = secondOperator;
-	}
+  if (chosenOperator.length == 2) {
+    one = chosenOperator.slice(0, 1);
+    two = chosenOperator.slice(1, 2);
+    chosenOperator = one;
+    operate();
+    chosenOperator = two;
+  }
   firstNumber = displayNumber;
-	displayNumber = '';
-}
+  displayNumber = '';
+  }
 
 number.forEach(button => {
     button.addEventListener('click', function () {
@@ -80,6 +80,13 @@ function appendNumber(number) {
     if (number === '.' && displayNumber.includes('.')) return;
       return;
     }
+
+    if ((chosenOperator == '') && (displayNumber !== '')) {
+		displayNumber = number;
+		screenText.innerHTML = displayNumber;
+		return;
+    }
+
     displayNumber += number;
     screenText.innerText = displayNumber;
 }
@@ -112,5 +119,5 @@ function operate() {
 
 	displayNumber = result;
 	screenText.innerHTML = result;
-
+  chosenOperator = '';
 }
