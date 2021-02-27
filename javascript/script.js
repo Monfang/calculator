@@ -59,6 +59,9 @@ function chooseOperator(symbol) {
   chosenOperator += symbol;
 
   if (chosenOperator.length == 2) {
+		if (displayNumber == '') {
+			return;
+		}
     one = chosenOperator.slice(0, 1);
     two = chosenOperator.slice(1, 2);
     chosenOperator = one;
@@ -81,11 +84,11 @@ function appendNumber(number) {
       return;
     }
 
-    if ((chosenOperator == '') && (displayNumber !== '')) {
-		displayNumber = number;
-		screenText.innerHTML = displayNumber;
-		return;
-    }
+    //if ((chosenOperator == '') && (displayNumber !== '')) {
+		//displayNumber = number;
+		//screenText.innerHTML = displayNumber;
+		//return;
+    //}
 
     displayNumber += number;
     screenText.innerText = displayNumber;
