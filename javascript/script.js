@@ -99,7 +99,6 @@ equals.addEventListener('click', function () {
     //    return;
   //  }
   operate();
-
 })
 
 function operate() {
@@ -121,6 +120,8 @@ function operate() {
   }
 
 	displayNumber = result;
+
 	screenText.innerHTML = result;
   chosenOperator = '';
+
 }
