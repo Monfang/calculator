@@ -24,6 +24,9 @@ function callOperator(symbol) {
 	chosenOperator += symbol;
 
 	if (chosenOperator.length == 2) {
+		if (displayNumber == '') {
+			return;
+		}
 		one = chosenOperator.slice(0, 1);
 		two = chosenOperator.slice(1, 2);
 		chosenOperator = one;
@@ -64,7 +67,6 @@ function operate() {
 
 		document.getElementById('screenText').innerHTML = result;
 		chosenOperator = '';
-		console.log(chosenOperator);
 	//console.log(displayNumber);
 }
 
